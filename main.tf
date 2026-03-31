@@ -1,3 +1,20 @@
+# TODO
+# - Remove hardcoded passwords and secrets (admin123, casdoor_admin) and move them to a secure storage (Vault / Secrets Manager / SOPS)
+# - Remove cluster-admin privileges from headlamp and implement RBAC following the least privilege principle
+# - Fix JWT configuration (issuer must not be localhost; it should be a valid external URL)
+# - Remove overly permissive access policies (requestPrincipals = ["*"]) and restrict access by roles/services
+# - Enable TLS (HTTPS) for ingress and eliminate plain HTTP usage
+# - Replace wildcard "*" in hosts with specific domain names
+# - Remove time_sleep and other unreliable waiting workarounds
+# - Remove local-exec with sleep (non-deterministic behavior and breaks idempotency)
+# - Reevaluate the use of HAProxy + Istio together (remove redundant ingress or clearly separate responsibilities)
+# - Enable persistence for Postgres (to prevent data loss)
+# - Restrict service access using NetworkPolicy
+# - Add resource limits/requests for containers (to prevent internal cluster DoS)
+# - Pin versions for Helm charts and container images (to avoid unexpected changes)
+# - Separate infrastructure and application deployments (to avoid breaking the entire stack on changes)
+# ...
+
 terraform {
   required_providers {
     kubernetes = {
